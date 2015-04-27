@@ -107,13 +107,17 @@ module
 	};
 
 	$scope.onEnter = function (event) {
-		$scope.isHovering = true;
-		$scope.offsetLeft = event.originalTarget.getBoundingClientRect().x;
+		if(!$scope.readonly()){
+			$scope.isHovering = true;
+			$scope.offsetLeft = event.originalTarget.getBoundingClientRect().x;
+		}
 	};
 	$scope.onHover = function (event) {
-		$scope.isHovering = true;
-		$scope.hoverValue = Math.round((event.clientX-$scope.offsetLeft)/$scope.starwidth/$scope.step) * $scope.step;
-		$scope.over(event, $scope.hoverValue);
+		if(!$scope.readonly()){
+			$scope.isHovering = true;
+			$scope.hoverValue = Math.round((event.clientX-$scope.offsetLeft)/$scope.starwidth/$scope.step) * $scope.step;
+			$scope.over(event, $scope.hoverValue);
+		}
 	};
 	$scope.onLeave = function () {
 		$scope.isHovering = false;
