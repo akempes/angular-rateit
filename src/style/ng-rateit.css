@@ -5,11 +5,6 @@
 	.ngrateit-readonly{
 		cursor: default;
 	}
-	.ngrateit-reset{
-		display: inline-block;
-		background: url("star.gif");
-	    background-repeat:no-repeat;
-	}
 
 	.ngrateit-star_wrapper{
 		position: relative;
@@ -20,12 +15,17 @@
 		position: absolute;
 		top: 0;
 		left: 0;
-		background: url("star.gif");
+		background: url("../images/star.gif");
 		background-repeat: repeat-x;
 		height: 100%;
 	}
 	.ngrateit-background{
 		width: 100%;
+	}
+	.ngrateit-reset{
+		display: inline-block;
+	    background-repeat:no-repeat;
+	    position: relative;
 	}
 	.ngrateit-value{
 		background-repeat: repeat-x;

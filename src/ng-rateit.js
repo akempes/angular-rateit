@@ -1,14 +1,14 @@
 var module = angular.module('ngRateIt', ['ng']);
 
 module
-.directive('ngRateIt', function( $q ) {
+.directive('ngRateIt', ["$q", function( $q ) {
 	'use strict';
 
 	/*jslint unparam:true */
 	var link = function ($scope, $element, $attrs) {
 
-		if(!$attrs.readonly){
-			$scope.readonly = function(){return false;};
+		if(!$attrs.readOnly){
+			$scope.readOnly = function(){return false;};
 		}
 
 		if(!$attrs.resetable){
@@ -44,7 +44,7 @@ module
 			min        : '=?min',
 			max        : '=?max',
 			step       : '=?step',
-			readonly   : '&?readonly',
+			readOnly   : '&?readOnly',
 			ispreset   : '=?ispreset',
 			resetable  : '&?resetable',
 			starwidth  : '=?starwidth',
@@ -62,8 +62,8 @@ module
         controller: 'ngRateItController'
 	};
 
-})
-.controller('ngRateItController', function ( $scope ) {
+}])
+.controller('ngRateItController', ["$scope", function ( $scope ) {
 	'use strict';
 
 	$scope.isHovering = false;
@@ -87,7 +87,7 @@ module
 	});
 
 	$scope.removeRating = function () {
-		if($scope.resetable() && !$scope.readonly()){
+		if($scope.resetable() && !$scope.readOnly()){
 			$scope.beforereset().then(function() {
 				$scope.ngModel = $scope.min;
 				$scope.reset();
@@ -96,7 +96,7 @@ module
 	};
 
 	$scope.setValue = function () {
-		if($scope.isHovering && !$scope.readonly()){
+		if($scope.isHovering && !$scope.readOnly()){
 			var tmpValue = angular.copy($scope.min+$scope.hoverValue);
 			$scope.beforerated(tmpValue).then(function() {
 				$scope.ngModel = tmpValue;
@@ -124,18 +124,18 @@ module
 		garbage();
 	});
 
-})
+}])
 .run(['$templateCache',	function ($templateCache) {
 	'use strict';
 
 	$templateCache.put('ngRateIt/ng-rate-it.html',
 
-		'<div class="ngrateit" ng-class="{\'ngrateit-readonly\': readonly()}">' +
-			'<a class="ngrateit-reset" ng-mouseenter="resetCssOffset=5;" ng-mouseleave="resetCssOffset=4;" ng-if="!readonly() && resetable()" ng-click="removeRating()" ng-style="{\'width\': starwidth+\'px\', \'height\': starheight+\'px\', \'background-position\': \'0 \'+(-resetCssOffset*starheight)+\'px\'}"></a>' +
+		'<div class="ngrateit" ng-class="{\'ngrateit-readonly\': readOnly()}">' +
+			'<a class="ngrateit-background ngrateit-reset" ng-mouseenter="resetCssOffset=5;" ng-mouseleave="resetCssOffset=4;" ng-if="!readOnly() && resetable()" ng-click="removeRating()" ng-style="{\'width\': starwidth+\'px\', \'height\': starheight+\'px\', \'background-position\': \'0 \'+(-resetCssOffset*starheight)+\'px\'}"></a>' +
 			'<div class="ngrateit-star_wrapper" ng-click="setValue()" ng-mouseenter="onEnter($event)" ng-mousemove="onHover($event)" ng-mouseleave="onLeave();" ng-style="{\'width\': ((max-min)*starwidth)+\'px\', \'height\': starheight+\'px\'}">' +
 				'<div class="ngrateit-background"></div>' +
-				'<div class="ngrateit-value" ng-hide="!readonly() && hoverValue>0 && hoverValue!==(ngModel-min)" ng-style="{\'width\': (ngModel-min)*starwidth+\'px\', \'background-position\': \'0 \'+(-2*starheight)+\'px\'}"></div>' +
-				'<div class="ngrateit-hover" ng-if="!readonly() && hoverValue!==(ngModel-min)" ng-style="{\'width\': hoverValue*starwidth+\'px\', \'background-position\': \'0 \'+(-3*starheight)+\'px\'}" ></div>' +
+				'<div class="ngrateit-value" ng-hide="!readOnly() && hoverValue>0 && hoverValue!==(ngModel-min)" ng-style="{\'width\': (ngModel-min)*starwidth+\'px\', \'background-position\': \'0 \'+(-2*starheight)+\'px\'}"></div>' +
+				'<div class="ngrateit-hover" ng-if="!readOnly() && hoverValue!==(ngModel-min)" ng-style="{\'width\': hoverValue*starwidth+\'px\', \'background-position\': \'0 \'+(-3*starheight)+\'px\'}" ></div>' +
 			'</div>' +
 		'</div>'
 

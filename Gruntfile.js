@@ -71,13 +71,15 @@ module.exports = function (grunt) {
       }
     },
 
-    // Copies remaining files to places other tasks can use
-    copy: {
+    // This task converts all data found within a stylesheet (those within a url( ... ) declaration) 
+    // into base64-encoded data URI strings. This includes images and fonts.
+    imageEmbed: {
       dist: {
-        files: [{        
-          src: '<%= config.src %>/star.gif',
-          dest: '<%= config.dist %>/star.gif'
-        }]
+        src: [ "<%= config.src %>/style/ng-rateit.css" ],
+        dest: "<%= config.dist %>/ng-rateit.css",
+        options: {
+          deleteAfterEncoding : false
+        }
       }
     },
 
@@ -89,7 +91,7 @@ module.exports = function (grunt) {
       dist: {
         files: {
           '<%= config.dist %>/ng-rateit.css': [
-            '<%= config.src %>/ng-rateit.css'
+            '<%= config.dist %>/ng-rateit.css'
           ]
         }
       }
@@ -104,7 +106,7 @@ module.exports = function (grunt) {
     'removelogging',
     'ngAnnotate',
     'uglify',
-    'copy',
+    'imageEmbed',
     'cssmin'
   ]);
 
