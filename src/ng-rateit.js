@@ -63,7 +63,7 @@ module
 	};
 
 }])
-.controller('ngRateItController', ["$scope", function ( $scope ) {
+.controller('ngRateItController', ["$scope", "$timeout", function ( $scope, $timeout ) {
 	'use strict';
 
 	$scope.isHovering = false;
@@ -101,7 +101,9 @@ module
 			$scope.beforerated(tmpValue).then(function() {
 				$scope.ngModel = tmpValue;
 				$scope.isHovering = false;
-				$scope.rated();
+				$timeout(function(){
+					$scope.rated();
+				});
 			});
 		}
 	};
