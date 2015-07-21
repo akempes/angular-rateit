@@ -8,6 +8,7 @@ myApp.controller('ExampleController', ['$scope', '$q', '$timeout', function($sco
         $scope.model = {
             basic: 0,
             readonly: 2.5,
+            readonly_enables: true,
             minMaxStep:6,
             pristine: 3,
             resetable: 1,
