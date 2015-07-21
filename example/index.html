@@ -36,9 +36,11 @@
 
         <h3>Read only</h3>
         <div>
-            <ng-rate-it ng-model="model.readonly" read-only="true"></ng-rate-it>
+            <ng-rate-it ng-model="model.readonly" read-only="model.readonly_enables"></ng-rate-it>
+            <div class="checkbox"><label><input type="checkbox" ng-model="model.readonly_enables"> Read only</label></div>
             <p>Value: {{model.readonly}}</p>
-            <pre><ng-rate-it ng-model="model.readonly" read-only="true"></ng-rate-it></pre>
+            <pre><ng-rate-it ng-model="model.readonly" read-only="model.readonly_enables"></ng-rate-it>
+<label><input type="checkbox" ng-model="model.readonly_enables"> Read only</label></pre>
         </div>
 
         <h3>Is pristine</h3>
