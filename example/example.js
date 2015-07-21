@@ -9,7 +9,7 @@ myApp.controller('ExampleController', ['$scope', '$q', '$timeout', function($sco
             basic: 0,
             readonly: 2.5,
             minMaxStep:1,
-            ispreset: 3,
+            pristine: 3,
             resetable: 1,
             heightWidth: 1.5,
             callbacks: 5,

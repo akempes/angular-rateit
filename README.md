@@ -44,16 +44,16 @@ For more advanced functionality you can add a couple attributes:
 	min = "Double"
 	max = "Double"
 	step = "Double"
-	readonly = "Boolean"
-	ispreset = "Boolean"
+	read-only = "Boolean"
+	pristine = "Boolean"
 	resetable = "Boolean"
-	starwidth = "Integer"
-	starheight = "Integer"
+	star-width = "Integer"
+	star-height = "Integer"
 	rated = "Function"
 	reset = "Function"
 	over = "Function"
-	beforerated = "Function: return promise"
-	beforereset = "Function: return promise"
+	before-rated = "Function: return promise"
+	before-reset = "Function: return promise"
 	>
 </ng-rate-it>
 ```
@@ -62,18 +62,36 @@ For more advanced functionality you can add a couple attributes:
 
 | Attribute | Description | Value | Default |
 |---|---|---|---|
-| ng-model    | Object bound to control. (Required) | String, Number, Array | - |
-| min         | Minimal value. | Double | 0 |
-| max         | Maximal value. The difference between min and max will provide the number of stars. | Double | 5 |
-| step        | Step size. | Double | 0.5 |
-| readonly    | Whether or not is readonly. | Boolean | false |
-| ispreset    | Whether or not the current value is the initial value. | Boolean | true |
-| resetable   | When not readonly, whether to show the reset button. | Boolean | true |
-| starwidth   | Width of the star picture. | Integer | 16 |
-| starheight  | Height of the star picture.  | Integer | 16 |
-| rated       | Fired when a rating happened. (Obtain the rated value by the model) | Function | - |
-| reset       | Fired when the reset button was clicked. | Function | - |
-| over        | Fired when hovering over the element. First function parameter is the event, second parameter will contain the hover rating value. | Function | - |
-| beforerated | Fired before the item is actually rated. By rejecting the promise it is possible to cancel the rating. | Function: return promise | - |
-| beforereset | Fired before the item is actually reset. By rejecting the promise it is possible to cancel the reset. | Function: return promise | - |
+| ng-model     | Object bound to control. (Required) | String, Number, Array | - |
+| min          | Minimal value. | Double | 0 |
+| max          | Maximal value. The difference between min and max will provide the number of stars. | Double | 5 |
+| step         | Step size. | Double | 0.5 |
+| read-only    | Whether or not is readonly. | Boolean | false |
+| pristine     | Whether or not the current value is the initial value. | Boolean | true |
+| resetable    | When not readonly, whether to show the reset button. | Boolean | true |
+| star-width   | Width of the star picture. | Integer | 16 |
+| star-height  | Height of the star picture.  | Integer | 16 |
+| rated        | Fired when a rating happened. (Obtain the rated value by the model) | Function | - |
+| reset        | Fired when the reset button was clicked. | Function | - |
+| over         | Fired when hovering over the element. First function parameter is the event, second parameter will contain the hover rating value. | Function | - |
+| before-rated | Fired before the item is actually rated. By rejecting the promise it is possible to cancel the rating. | Function: return promise | - |
+| before-reset | Fired before the item is actually reset. By rejecting the promise it is possible to cancel the reset. | Function: return promise | - |
+
+
+### Customization
+
+You can easily add your own star style via css. You can use the star-width and star-height attributes to make the 'stars' bigger if necessary.
+
+```html
+<style>
+	.custom .ngrateit-background,
+	.custom .ngrateit-hover,
+	.custom .ngrateit-value{
+		background-image: url('custom.png');
+	}
+</style>
+<ng-rate-it ng-model="model.custom" class="custom"></ng-rate-it>
+```
+
+### Release Note:
 

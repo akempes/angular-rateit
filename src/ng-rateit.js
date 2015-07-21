@@ -15,16 +15,16 @@ module
 			$scope.resetable = function(){return true;};
 		}
 
-		if(!$attrs.beforerated){
-			$scope.beforerated = function(){var d = $q.defer(); d.resolve(); return d.promise;};
+		if(!$attrs.beforeRated){
+			$scope.beforeRated = function(){var d = $q.defer(); d.resolve(); return d.promise;};
 		}
 
 		if(!$attrs.rated){
 			$scope.rated = function(){return;};
 		}
 
-		if(!$attrs.beforereset){
-			$scope.beforereset = function(){var d = $q.defer(); d.resolve(); return d.promise;};
+		if(!$attrs.beforeReset){
+			$scope.beforeReset = function(){var d = $q.defer(); d.resolve(); return d.promise;};
 		}
 
 		if(!$attrs.reset){
@@ -45,15 +45,15 @@ module
 			max        : '=?max',
 			step       : '=?step',
 			readOnly   : '&?readOnly',
-			ispreset   : '=?ispreset',
+			pristine   : '=?pristine',
 			resetable  : '&?resetable',
-			starwidth  : '=?starwidth',
-			starheight : '=?starheight',
+			starWidth  : '=?starWidth',
+			starHeight : '=?starHeight',
 			rated      : '=?rated',
 			reset      : '=?reset',
 			over       : '=?over',
-			beforerated: '=?beforerated',
-			beforereset: '=?beforereset'
+			beforeRated: '=?beforeRated',
+			beforeReset: '=?beforeReset'
 		},
 		templateUrl: 'ngRateIt/ng-rate-it.html',
         require: 'ngModel',
@@ -75,20 +75,20 @@ module
 	$scope.max = $scope.max || 5;
 	$scope.step = $scope.step || 0.5;
 
-	$scope.ispreset = $scope.orgValue === $scope.ngModel;
+	$scope.pristine = $scope.orgValue === $scope.ngModel;
 	
-	$scope.starwidth = $scope.starwidth || 16;
-	$scope.starheight = $scope.starheight || 16;
+	$scope.starWidth = $scope.starWidth || 16;
+	$scope.starHeight = $scope.starHeight || 16;
 
 	$scope.resetCssOffset = 4;
 
 	var garbage = $scope.$watch('ngModel', function () {
-		$scope.ispreset = $scope.orgValue === $scope.ngModel;
+		$scope.pristine = $scope.orgValue === $scope.ngModel;
 	});
 
 	$scope.removeRating = function () {
 		if($scope.resetable() && !$scope.readOnly()){
-			$scope.beforereset().then(function() {
+			$scope.beforeReset().then(function() {
 				$scope.ngModel = $scope.min;
 				$scope.reset();
 			});
@@ -98,7 +98,7 @@ module
 	$scope.setValue = function () {
 		if($scope.isHovering && !$scope.readOnly()){
 			var tmpValue = angular.copy($scope.min+$scope.hoverValue);
-			$scope.beforerated(tmpValue).then(function() {
+			$scope.beforeRated(tmpValue).then(function() {
 				$scope.ngModel = tmpValue;
 				$scope.isHovering = false;
 				$timeout(function(){
@@ -120,7 +120,7 @@ module
 	};
 	$scope.onHover = function (event) {
 		$scope.isHovering = true;
-		$scope.hoverValue = Math.round((event.clientX-$scope.offsetLeft)/$scope.starwidth/$scope.step) * $scope.step;
+		$scope.hoverValue = Math.round((event.clientX-$scope.offsetLeft)/$scope.starWidth/$scope.step) * $scope.step;
 		$scope.over(event, $scope.hoverValue);
 	};
 	$scope.onLeave = function () {
@@ -139,11 +139,11 @@ module
 	$templateCache.put('ngRateIt/ng-rate-it.html',
 
 		'<div class="ngrateit" ng-class="{\'ngrateit-readonly\': readOnly()}">' +
-			'<a class="ngrateit-background ngrateit-reset" ng-mouseenter="resetCssOffset=5;" ng-mouseleave="resetCssOffset=4;" ng-if="!readOnly() && resetable()" ng-click="removeRating()" ng-style="{\'width\': starwidth+\'px\', \'height\': starheight+\'px\', \'background-position\': \'0 \'+(-resetCssOffset*starheight)+\'px\'}"></a>' +
-			'<div class="ngrateit-star_wrapper" ng-click="setValue()" ng-mouseenter="onEnter($event)" ng-mousemove="onHover($event)" ng-mouseleave="onLeave();" ng-style="{\'width\': ((max-min)*starwidth)+\'px\', \'height\': starheight+\'px\'}">' +
+			'<a class="ngrateit-background ngrateit-reset" ng-mouseenter="resetCssOffset=5;" ng-mouseleave="resetCssOffset=4;" ng-if="!readOnly() && resetable()" ng-click="removeRating()" ng-style="{\'width\': starWidth+\'px\', \'height\': starHeight+\'px\', \'background-position\': \'0 \'+(-resetCssOffset*starHeight)+\'px\'}"></a>' +
+			'<div class="ngrateit-star_wrapper" ng-click="setValue()" ng-mouseenter="onEnter($event)" ng-mousemove="onHover($event)" ng-mouseleave="onLeave();" ng-style="{\'width\': ((max-min)*starWidth)+\'px\', \'height\': starHeight+\'px\'}">' +
 				'<div class="ngrateit-background"></div>' +
-				'<div class="ngrateit-value" ng-hide="!readOnly() && hoverValue>0 && hoverValue!==(ngModel-min)" ng-style="{\'width\': (ngModel-min)*starwidth+\'px\', \'background-position\': \'0 \'+(-2*starheight)+\'px\'}"></div>' +
-				'<div class="ngrateit-hover" ng-if="!readOnly() && hoverValue!==(ngModel-min)" ng-style="{\'width\': hoverValue*starwidth+\'px\', \'background-position\': \'0 \'+(-3*starheight)+\'px\'}" ></div>' +
+				'<div class="ngrateit-value" ng-hide="!readOnly() && hoverValue>0 && hoverValue!==(ngModel-min)" ng-style="{\'width\': (ngModel-min)*starWidth+\'px\', \'background-position\': \'0 \'+(-2*starHeight)+\'px\'}"></div>' +
+				'<div class="ngrateit-hover" ng-if="!readOnly() && hoverValue!==(ngModel-min)" ng-style="{\'width\': hoverValue*starWidth+\'px\', \'background-position\': \'0 \'+(-3*starHeight)+\'px\'}" ></div>' +
 			'</div>' +
 		'</div>'
 
