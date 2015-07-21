@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html data-ng-app="exampleApp">
+    <head class="ng-cloak">
+
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.js"></script>
+        
+        <script src="../dist/ng-rateit.js" type="text/javascript"></script>
+        <link href="../dist/ng-rateit.css" rel="stylesheet">
+
+        <script src="example.js" type="text/javascript"></script>
+
+        <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-combined.min.css" rel="stylesheet">
+    </head>
+
+    <body ng-controller="ExampleController" class="ng-cloak container">
+
+        <div class="navbar navbar-inverse">
+            <div class="navbar-inner">
+                <a class="brand" href="https://github.com/akempes/angular-rateit">Angular-rateit - Examples</a>
+            </div>
+        </div>
+    
+        <h3>Basic</h3>
+        <div>
+            <ng-rate-it ng-model="model.basic"></ng-rate-it>
+            <p>Value: {{model.basic}}</p>
+            <pre><ng-rate-it ng-model="model.basic"></ng-rate-it></pre>
+        </div>
+
+        <h3>Min, Max &amp; step</h3>
+        <div>
+            <ng-rate-it ng-model="model.minMaxStep" min="5" max="15" step="2"></ng-rate-it>
+            <p>Value: {{model.minMaxStep}}</p>
+            <pre><ng-rate-it ng-model="model.minMaxStep" min="5" max="15" step="2"></ng-rate-it></pre>
+        </div>
+
+        <h3>Read only</h3>
+        <div>
+            <ng-rate-it ng-model="model.readonly" read-only="true"></ng-rate-it>
+            <p>Value: {{model.readonly}}</p>
+            <pre><ng-rate-it ng-model="model.readonly" read-only="true"></ng-rate-it></pre>
+        </div>
+
+        <h3>Is pristine (ispreset)</h3>
+        <div>
+            <ng-rate-it ng-model="model.ispreset" ispreset="model.resetable_pristine"></ng-rate-it>
+            <p>Value: {{model.ispreset}}</p>
+            <p>Is pristine: {{model.resetable_pristine ? 'Yes' : 'No'}}</p>
+            <pre><ng-rate-it ng-model="model.ispreset" ispreset="model.resetable_pristine"></ng-rate-it></pre>
+        </div>
+
+        <h3>No reset</h3>
+        <div>
+            <ng-rate-it ng-model="model.resetable" resetable="false"></ng-rate-it>
+            <p>Value: {{model.resetable}}</p>
+            <pre><ng-rate-it ng-model="model.resetable" resetable="false"></ng-rate-it></pre>
+        </div>
+
+        <h3>Start height/width</h3>
+        <div>
+            <style>
+                .bigstar .ngrateit-background,
+                .bigstar .ngrateit-hover,
+                .bigstar .ngrateit-value{
+                    background-image: url('bigstar.gif');
+                }
+            </style>
+            <ng-rate-it ng-model="model.heightWidth" starwidth="32" starheight="32" class="bigstar"></ng-rate-it>
+            <p>Value: {{model.heightWidth}}</p>
+<pre>
+<style>
+    .bigstar .ngrateit-background,
+    .bigstar .ngrateit-hover,
+    .bigstar .ngrateit-value{
+        background-image: url('bigstar.gif');
+    }
+</style>
+<ng-rate-it ng-model="model.heightWidth" starwidth="32" starheight="32" class="bigstar"></ng-rate-it>
+</pre>
+        </div>
+
+        <h3>Callbacks</h3>
+        <div>
+            <ng-rate-it ng-model="model.callbacks" rated="ratedCallback" reset="resetCallback" over="overCallback" beforerated="confirmRating" beforereset="confirmReset"></ng-rate-it>
+            <p>Note: The 'over' callback will be visible in the console log.</p>
+            <p>Value: {{model.resetable}}</p>
+            <pre><ng-rate-it ng-model="model.callbacks" rated="ratedCallback" reset="resetCallback" over="overCallback" beforerated="confirmRating" beforereset="confirmReset"></ng-rate-it></pre>
+        </div>
+
+        <h3>Custom image</h3>
+        <div>
+            <style>
+                .custom .ngrateit-background,
+                .custom .ngrateit-hover,
+                .custom .ngrateit-value{
+                    background-image: url('custom.png');
+                }
+            </style>
+            <ng-rate-it ng-model="model.custom" class="custom"></ng-rate-it>
+            <p>Value: {{model.custom}}</p>
+<pre>
+<style>
+    .custom .ngrateit-background,
+    .custom .ngrateit-hover,
+    .custom .ngrateit-value{
+        background-image: url('custom.png');
+    }
+</style>
+<ng-rate-it ng-model="model.custom" class="custom"></ng-rate-it>
+</pre>
+
+        </div>
+
+        <script>
+
+            //Not part of ng-rate-it, this is just to show the used HTML code
+
+            (function () {
+
+                function html(s) {
+                    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+                }
+
+                var elements = document.getElementsByTagName('pre');
+                for (var i = 0; i < elements.length; i++) {
+                    elements[i].innerHTML = html(elements[i].innerHTML);
+                };
+
+            })();
+        </script>
+
+    </body>
+</html>
