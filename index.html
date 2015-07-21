@@ -41,12 +41,12 @@
             <pre><ng-rate-it ng-model="model.readonly" read-only="true"></ng-rate-it></pre>
         </div>
 
-        <h3>Is pristine (ispreset)</h3>
+        <h3>Is pristine</h3>
         <div>
-            <ng-rate-it ng-model="model.ispreset" ispreset="model.resetable_pristine"></ng-rate-it>
-            <p>Value: {{model.ispreset}}</p>
+            <ng-rate-it ng-model="model.pristine" pristine="model.resetable_pristine"></ng-rate-it>
+            <p>Value: {{model.pristine}}</p>
             <p>Is pristine: {{model.resetable_pristine ? 'Yes' : 'No'}}</p>
-            <pre><ng-rate-it ng-model="model.ispreset" ispreset="model.resetable_pristine"></ng-rate-it></pre>
+            <pre><ng-rate-it ng-model="model.pristine" pristine="model.resetable_pristine"></ng-rate-it></pre>
         </div>
 
         <h3>No reset</h3>
@@ -65,7 +65,7 @@
                     background-image: url('bigstar.gif');
                 }
             </style>
-            <ng-rate-it ng-model="model.heightWidth" starwidth="32" starheight="32" class="bigstar"></ng-rate-it>
+            <ng-rate-it ng-model="model.heightWidth" star-width="32" star-height="32" class="bigstar"></ng-rate-it>
             <p>Value: {{model.heightWidth}}</p>
 <pre>
 <style>
@@ -75,16 +75,16 @@
         background-image: url('bigstar.gif');
     }
 </style>
-<ng-rate-it ng-model="model.heightWidth" starwidth="32" starheight="32" class="bigstar"></ng-rate-it>
+<ng-rate-it ng-model="model.heightWidth" star-width="32" star-height="32" class="bigstar"></ng-rate-it>
 </pre>
         </div>
 
         <h3>Callbacks</h3>
         <div>
-            <ng-rate-it ng-model="model.callbacks" rated="ratedCallback" reset="resetCallback" over="overCallback" beforerated="confirmRating" beforereset="confirmReset"></ng-rate-it>
+            <ng-rate-it ng-model="model.callbacks" rated="ratedCallback" reset="resetCallback" over="overCallback" before-rated="confirmRating" before-reset="confirmReset"></ng-rate-it>
             <p>Note: The 'over' callback will be visible in the console log.</p>
             <p>Value: {{model.resetable}}</p>
-            <pre><ng-rate-it ng-model="model.callbacks" rated="ratedCallback" reset="resetCallback" over="overCallback" beforerated="confirmRating" beforereset="confirmReset"></ng-rate-it></pre>
+            <pre><ng-rate-it ng-model="model.callbacks" rated="ratedCallback" reset="resetCallback" over="overCallback" before-rated="confirmRating" before-reset="confirmReset"></ng-rate-it></pre>
         </div>
 
         <h3>Custom image</h3>
