@@ -10,6 +10,7 @@
     "dist/ng-rateit.js",
     "dist/ng-rateit.css"
   ],
+  "ignore": [],
   "dependencies": {
     "angular": ">=1.2.0"
   },
