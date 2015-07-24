@@ -1,17 +1,17 @@
 # angular-rateit
 
 This directive was inspired by the jQuery (star)rating plugin [RateIt](http://rateit.codeplex.com/).
-However this package will work without jQuery and is super light weight: 3.3 Kb minified 1.9 Kb.
+However this package will work without jQuery and is very light weight.
 
 ## Getting Started
 
-You can install an angular-rateit package very easily using Bower:
+You can install an angular-rateit package easily using Bower:
 
 ```shell
 bower install angular-rateit
 ```
 
-Or add the files manually to your index file:
+And add the files to your index page:
 
 ```html
 <link rel="stylesheet" href="angular-rateit/dist/rateit.css" />
