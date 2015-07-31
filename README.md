@@ -5,6 +5,8 @@ However this package will work without jQuery and is very light weight.
 
 ![ng-rate-it](https://cloud.githubusercontent.com/assets/5055413/8997545/b476cbdc-3722-11e5-9839-f94341752895.gif)
 
+![Live demo](http://akempes.github.io/angular-rateit/)
+
 ## Getting Started
 
 You can install an angular-rateit package easily using Bower:
