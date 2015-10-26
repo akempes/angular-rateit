@@ -39,6 +39,7 @@ To get it working simply add this block of code to your view:
 ```html
 <ng-rate-it ng-model="test.rateit"></ng-rate-it>
 ```
+**N.B.** When using angular 1.2.* use `<div ng-rate-it ng-model="test.rateit"></div>`
 
 For more advanced functionality you can add a couple attributes:
 
