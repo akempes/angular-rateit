@@ -113,10 +113,7 @@ module
 	    $scope.offsetLeft = 0;
 		
 		var el = event.originalTarget || event.srcElement;
-	    while( el && !isNaN( el.offsetLeft ) && !isNaN( el.offsetTop ) ) {
-	        $scope.offsetLeft += el.offsetLeft - el.scrollLeft;
-	        el = el.offsetParent;
-	    }
+	    $scope.offsetLeft = el.getBoundingClientRect().left;
 	};
 	$scope.onHover = function (event) {
 		$scope.isHovering = true;
