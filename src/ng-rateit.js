@@ -87,8 +87,8 @@ module
 	});
 
 	$scope.removeRating = function () {
-		if($scope.resetable() && !$scope.readOnly()){
-			$scope.beforeReset().then(function() {
+		if ($scope.resetable() && !$scope.readOnly()) {
+			$scope.beforeReset().then(function () {
 				$scope.ngModel = $scope.min;
 				$scope.reset();
 			});
@@ -96,12 +96,12 @@ module
 	};
 
 	$scope.setValue = function () {
-		if($scope.isHovering && !$scope.readOnly()){
-			var tmpValue = angular.copy($scope.min+$scope.hoverValue);
-			$scope.beforeRated(tmpValue).then(function() {
+		if ($scope.isHovering && !$scope.readOnly()) {
+			var tmpValue = angular.copy($scope.min + $scope.hoverValue);
+			$scope.beforeRated(tmpValue).then(function () {
 				$scope.ngModel = tmpValue;
 				$scope.isHovering = false;
-				$timeout(function(){
+				$timeout(function () {
 					$scope.rated();
 				});
 			});
@@ -110,14 +110,14 @@ module
 
 	$scope.onEnter = function (event) {
 		$scope.isHovering = true;
-	    $scope.offsetLeft = 0;
-		
-		var el = event.originalTarget || event.srcElement;
-	    $scope.offsetLeft = el.getBoundingClientRect().left;
+		$scope.offsetLeft = 0;
+
+		var el = event.originalTarget || event.srcElement || event.target;
+		$scope.offsetLeft = el.getBoundingClientRect().left;
 	};
 	$scope.onHover = function (event) {
 		$scope.isHovering = true;
-		$scope.hoverValue = Math.round((event.clientX-$scope.offsetLeft)/$scope.starWidth/$scope.step) * $scope.step;
+		$scope.hoverValue = Math.round((event.clientX - $scope.offsetLeft) / $scope.starWidth / $scope.step) * $scope.step;
 		$scope.over(event, $scope.hoverValue);
 	};
 	$scope.onLeave = function () {
