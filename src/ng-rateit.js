@@ -31,10 +31,6 @@ module
 			$scope.reset = function(){return;};
 		}
 
-		if(!$attrs.over){
-			$scope.over = function(){return;};
-		}
-
 	};
 	/*jslint unparam:false */
 
@@ -51,11 +47,10 @@ module
 			starHeight : '=?starHeight',
 			rated      : '=?rated',
 			reset      : '=?reset',
-			over       : '=?over',
 			beforeRated: '=?beforeRated',
 			beforeReset: '=?beforeReset'
 		},
-		templateUrl: 'ngRateIt/ng-rate-it.html',
+		templateUrl: 'ng-rate-it.html',
         require: 'ngModel',
         replace: true,
         link: link,
@@ -66,10 +61,8 @@ module
 .controller('ngRateItController', ["$scope", "$timeout", function ( $scope, $timeout ) {
 	'use strict';
 
-	$scope.isHovering = false;
-	$scope.offsetLeft = 0;
+	$scope.hide = false;
 	$scope.orgValue = angular.copy($scope.ngModel);
-	$scope.hoverValue = 0;
 
 	$scope.min = $scope.min || 0;
 	$scope.max = $scope.max || 5;
@@ -80,11 +73,23 @@ module
 	$scope.starWidth = $scope.starWidth || 16;
 	$scope.starHeight = $scope.starHeight || 16;
 
-	$scope.resetCssOffset = 4;
-
-	var garbage = $scope.$watch('ngModel', function () {
+	var diff = $scope.max - $scope.min,
+	steps = diff / 0.5,
+	garbage = $scope.$watch('ngModel', function () {
 		$scope.pristine = $scope.orgValue === $scope.ngModel;
-	});
+	}),
+
+	getValue = function (index) {
+		return (index+1)/ steps * diff;
+	};
+
+	$scope.getStartParts = function () {
+		return new Array(steps);
+	};
+
+	$scope.isSelected = function (index) {
+		return getValue(index) <= $scope.ngModel-$scope.min;
+	};
 
 	$scope.removeRating = function () {
 		if ($scope.resetable() && !$scope.readOnly()) {
@@ -95,34 +100,20 @@ module
 		}
 	};
 
-	$scope.setValue = function () {
-		if ($scope.isHovering && !$scope.readOnly()) {
-			var tmpValue = angular.copy($scope.min + $scope.hoverValue);
+	$scope.setValue = function (index) {
+		if (!$scope.readOnly()) {
+			$scope.hide = true; // Hide element due to presisting IOS :hover
+			var tmpValue = angular.copy($scope.min + getValue(index));
 			$scope.beforeRated(tmpValue).then(function () {
 				$scope.ngModel = tmpValue;
-				$scope.isHovering = false;
 				$timeout(function () {
 					$scope.rated();
 				});
 			});
+			$timeout(function () {
+				$scope.hide = false;
+			}, 5); // Show rating s.a.p. 
 		}
-	};
-
-	$scope.onEnter = function (event) {
-		$scope.isHovering = true;
-		$scope.offsetLeft = 0;
-
-		var el = event.originalTarget || event.srcElement || event.target;
-		$scope.offsetLeft = el.getBoundingClientRect().left;
-	};
-	$scope.onHover = function (event) {
-		$scope.isHovering = true;
-		$scope.hoverValue = Math.round((event.clientX - $scope.offsetLeft) / $scope.starWidth / $scope.step) * $scope.step;
-		$scope.over(event, $scope.hoverValue);
-	};
-	$scope.onLeave = function () {
-		$scope.isHovering = false;
-		$scope.hoverValue = 0;
 	};
 
 	$scope.$on('$destroy', function () {

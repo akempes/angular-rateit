@@ -27,10 +27,6 @@ myApp.controller('ExampleController', ['$scope', '$q', '$timeout', function($sco
             console.log('Reset clicked!');
         };
 
-        $scope.overCallback = function (e) {
-            console.log('overCallback', e);
-        };
-
         $scope.confirmReset = function () {
             var d = $q.defer(); 
             if(confirm('Are you sure about resetting this rating?')){

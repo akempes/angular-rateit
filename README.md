@@ -56,7 +56,6 @@ For more advanced functionality you can add a couple attributes:
 	star-height = "Integer"
 	rated = "Function"
 	reset = "Function"
-	over = "Function"
 	before-rated = "Function: return promise"
 	before-reset = "Function: return promise"
 	>
@@ -78,7 +77,6 @@ For more advanced functionality you can add a couple attributes:
 | star-height  | Height of the star picture.  | Integer | 16 |
 | rated        | Fired when a rating happened. (Obtain the rated value by the model) | Function | - |
 | reset        | Fired when the reset button was clicked. | Function | - |
-| over         | Fired when hovering over the element. First function parameter is the event, second parameter will contain the hover rating value. | Function | - |
 | before-rated | Fired before the item is actually rated. By rejecting the promise it is possible to cancel the rating. | Function: return promise | - |
 | before-reset | Fired before the item is actually reset. By rejecting the promise it is possible to cancel the reset. | Function: return promise | - |
 
@@ -89,9 +87,7 @@ You can easily add your own star style via css. You can use the star-width and s
 
 ```html
 <style>
-	.custom .ngrateit-background,
-	.custom .ngrateit-hover,
-	.custom .ngrateit-value{
+	.custom.ngrateit .ngrateit-star{
 		background-image: url('custom.png');
 	}
 </style>
@@ -100,3 +96,9 @@ You can easily add your own star style via css. You can use the star-width and s
 
 ### Release Note:
 
+V2.0.0
+
+* BREAKING: removed `over` callback.
+* Moved calculations from template to controller.
+* Template and CSS are refectured
+* 

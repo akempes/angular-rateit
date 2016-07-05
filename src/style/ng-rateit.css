@@ -1,35 +1,53 @@
-.ngrateit{
-    cursor: pointer;
-    display: inline-block;
+.ngrateit .ngrateit-rating {
+	display: inline-block;
+    overflow: hidden;
 }
-	.ngrateit-readonly{
-		cursor: default;
-	}
 
-	.ngrateit-star_wrapper{
-		position: relative;
-		display: inline-block;
-		overflow: hidden;
-	}
-	.ngrateit-background, .ngrateit-value, .ngrateit-hover{
-		position: absolute;
-		top: 0;
-		left: 0;
-		background: url("../images/star.gif");
-		background-repeat: repeat-x;
-		height: 100%;
-	}
-	.ngrateit-background{
-		width: 100%;
-	}
-	.ngrateit-reset{
-		display: inline-block;
-	    background-repeat:no-repeat;
-	    position: relative;
-	}
-	.ngrateit-value{
-		background-repeat: repeat-x;
-	}
-	.ngrateit-value{
-		background-repeat: repeat-x;
-	}
+/* Background */
+.ngrateit .ngrateit-star{
+    background-image: url("../images/rate-it.svg");
+    background-repeat: repeat-x;
+}
+.ngrateit .ngrateit-rating span { /* left star */
+    display: block;
+    float: left;
+    overflow: hidden;
+    background-position: 0 0;
+}
+.ngrateit .ngrateit-rating span:nth-child(even) { /* right star */
+	background-position: -100% 0;
+}
+
+/* Selected state */
+.ngrateit .ngrateit-rating span.ngrateit-selected {
+    background-position: 0 40%;
+}
+.ngrateit .ngrateit-rating span.ngrateit-selected:nth-child(even) {
+    background-position: -100% 40%;
+}
+
+/* Cancelation of hover styling */
+.ngrateit:not(.ngrateit-readonly) .ngrateit-rating span:hover ~ span {
+    background-position: 0 0px;
+}
+.ngrateit:not(.ngrateit-readonly) .ngrateit-rating span:hover ~ span:nth-child(even) {
+	background-position: -100% 0px; /* right star */
+}
+
+/* Hover styling */
+.ngrateit:not(.ngrateit-readonly) .ngrateit-rating:hover span {
+	cursor: pointer;
+    background-position: 0 20%; /* hover left star */
+}
+.ngrateit:not(.ngrateit-readonly) .ngrateit-rating:hover span:nth-child(even) {
+	background-position: -100% 20%; /* hover right star */
+}
+
+/* Reset button */
+.ngrateit-reset{
+	display: inline-block;
+	background-position:  0 80%; /* left star */
+}
+.ngrateit-reset:hover{
+	background-position:  0 100%; /* left star */
+}
