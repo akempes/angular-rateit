@@ -3,51 +3,41 @@
     overflow: hidden;
 }
 
-/* Background */
-.ngrateit .ngrateit-star{
-    background-image: url("../images/rate-it.svg");
-    background-repeat: repeat-x;
+/* Reset button */
+.ngrateit-reset{
+    background-image: url("../images/cancel-icon.svg");
+    display: inline-block;
+    background-position:  0 80%;
 }
-.ngrateit .ngrateit-rating span { /* left star */
+.ngrateit-reset:hover{
+    background-position:  0 100%;
+}
+
+/* star */
+.ngrateit .ngrateit-rating span {
     display: block;
     float: left;
     overflow: hidden;
-    background-position: 0 0;
+    background-repeat: repeat-x;
 }
-.ngrateit .ngrateit-rating span:nth-child(even) { /* right star */
-	background-position: -100% 0;
+
+/* Background */
+.ngrateit .ngrateit-bg-star{
+    background-image: url("../images/bg-star.svg");
 }
 
 /* Selected state */
 .ngrateit .ngrateit-rating span.ngrateit-selected {
-    background-position: 0 40%;
-}
-.ngrateit .ngrateit-rating span.ngrateit-selected:nth-child(even) {
-    background-position: -100% 40%;
+    background-image: url("../images/rated-star.svg");
 }
 
 /* Cancelation of hover styling */
 .ngrateit:not(.ngrateit-readonly) .ngrateit-rating span:hover ~ span {
-    background-position: 0 0px;
-}
-.ngrateit:not(.ngrateit-readonly) .ngrateit-rating span:hover ~ span:nth-child(even) {
-	background-position: -100% 0px; /* right star */
+    background-image: url("../images/bg-star.svg");
 }
 
 /* Hover styling */
 .ngrateit:not(.ngrateit-readonly) .ngrateit-rating:hover span {
-	cursor: pointer;
-    background-position: 0 20%; /* hover left star */
-}
-.ngrateit:not(.ngrateit-readonly) .ngrateit-rating:hover span:nth-child(even) {
-	background-position: -100% 20%; /* hover right star */
-}
-
-/* Reset button */
-.ngrateit-reset{
-	display: inline-block;
-	background-position:  0 80%; /* left star */
-}
-.ngrateit-reset:hover{
-	background-position:  0 100%; /* left star */
+    cursor: pointer;
+    background-image: url("../images/hover-star.svg");
 }

@@ -71,20 +71,27 @@ module
 	$scope.pristine = $scope.orgValue === $scope.ngModel;
 	
 	$scope.starWidth = $scope.starWidth || 16;
+	$scope.starPartWidth = $scope.starWidth * $scope.step;
 	$scope.starHeight = $scope.starHeight || 16;
 
 	var diff = $scope.max - $scope.min,
-	steps = diff / 0.5,
+	steps = diff / $scope.step,
 	garbage = $scope.$watch('ngModel', function () {
 		$scope.pristine = $scope.orgValue === $scope.ngModel;
 	}),
 
 	getValue = function (index) {
-		return (index+1)/ steps * diff;
+		return (index+1) / steps * diff;
 	};
 
 	$scope.getStartParts = function () {
 		return new Array(steps);
+	};
+
+	$scope.getStarOffset = function (index) {
+		var ratio = 1/$scope.step,
+		offset = -($scope.starWidth/ratio)*(index%ratio);
+		return  offset;
 	};
 
 	$scope.isSelected = function (index) {

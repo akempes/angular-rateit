@@ -9,11 +9,11 @@
 
     <div ng-if="!hide" id="origin" class="ngrateit-rating">
         <span
-            class="ngrateit-star"
+            class="ngrateit-bg-star"
             ng-repeat="i in getStartParts() track by $index" 
             ng-class="{'ngrateit-selected': isSelected($index) }"
             ng-click="setValue($index)"
-            ng-style="{'width': starWidth/2+'px', 'height':starHeight+'px'}"
+            ng-style="{'width': starPartWidth+'px', 'height':starHeight+'px', 'background-position': getStarOffset($index)+'px 0'}"
         ><span>
     </div>
 
