@@ -75,7 +75,7 @@
             <p>Value: {{model.heightWidth}}</p>
 <pre>
 <style>
-    .bigstar.ngrateit .ngrateit-star{
+    .ngrateit-star{
         background-size: 32px;
     }
 </style>
@@ -93,19 +93,53 @@
         <h3>Custom image</h3>
         <div>
             <style>
-                .custom.ngrateit .ngrateit-star{
-                    background-image: url('custom.png');
+                /* Reset button */
+                .custom .ngrateit-reset{
+                    background-image: url("cancel-icon.svg");
+                }
+                /* Background */
+                .custom .ngrateit-bg-star{
+                    background-image: url("bg-car.svg");
+                }
+                /* Selected state */
+                .custom .ngrateit-selected {
+                    background-image: url("rated-car.svg");
+                }
+                /* Cancelation of hover styling */
+                .custom.ngrateit:not(.ngrateit-readonly) .ngrateit-rating span:hover ~ span {
+                    background-image: url("bg-car.svg");
+                }
+                /* Hover styling */
+                .custom.ngrateit:not(.ngrateit-readonly) .ngrateit-rating:hover span {
+                    background-image: url("hover-car.svg");
                 }
             </style>
-            <ng-rate-it ng-model="model.custom" class="custom"></ng-rate-it>
+            <ng-rate-it ng-model="model.custom" class="custom" star-width="32" star-height="16" canel-width="16" cancel-height="16"></ng-rate-it>
             <p>Value: {{model.custom}}</p>
 <pre>
 <style>
-    .custom.ngrateit .ngrateit-star{
-        background-image: url('custom.png');
+    /* Reset button */
+    .custom .ngrateit-reset{
+        background-image: url("cancel-icon.svg");
+    }
+    /* Background */
+    .custom .ngrateit-bg-star{
+        background-image: url("bg-car.svg");
+    }
+    /* Selected state */
+    .custom .ngrateit-selected {
+        background-image: url("rated-car.svg");
+    }
+    /* Cancelation of hover styling */
+    .custom.ngrateit:not(.ngrateit-readonly) .ngrateit-rating span:hover ~ span {
+        background-image: url("bg-car.svg");
+    }
+    /* Hover styling */
+    .custom.ngrateit:not(.ngrateit-readonly) .ngrateit-rating:hover span {
+        background-image: url("hover-car.svg");
     }
 </style>
-<ng-rate-it ng-model="model.custom" class="custom"></ng-rate-it>
+<ng-rate-it ng-model="model.custom" class="custom" star-width="32" star-height="16" canel-width="16" cancel-height="16"></ng-rate-it>
 </pre>
 
         </div>

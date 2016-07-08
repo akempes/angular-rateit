@@ -1,4 +1,4 @@
-.ngrateit .ngrateit-rating {
+.ngrateit-rating {
 	display: inline-block;
     overflow: hidden;
 }
@@ -7,14 +7,14 @@
 .ngrateit-reset{
     background-image: url("../images/cancel-icon.svg");
     display: inline-block;
-    background-position:  0 80%;
+    background-position:  0 0;
 }
 .ngrateit-reset:hover{
     background-position:  0 100%;
 }
 
 /* star */
-.ngrateit .ngrateit-rating span {
+.ngrateit-star{
     display: block;
     float: left;
     overflow: hidden;
@@ -22,12 +22,12 @@
 }
 
 /* Background */
-.ngrateit .ngrateit-bg-star{
+.ngrateit-bg-star{
     background-image: url("../images/bg-star.svg");
 }
 
 /* Selected state */
-.ngrateit .ngrateit-rating span.ngrateit-selected {
+.ngrateit-selected {
     background-image: url("../images/rated-star.svg");
 }
 

@@ -36,21 +36,23 @@ module
 
 	return {
 		scope:{
-			ngModel    : '=',
-			min        : '=?min',
-			max        : '=?max',
-			step       : '=?step',
-			readOnly   : '&?readOnly',
-			pristine   : '=?pristine',
-			resetable  : '&?resetable',
-			starWidth  : '=?starWidth',
-			starHeight : '=?starHeight',
-			rated      : '=?rated',
-			reset      : '=?reset',
-			beforeRated: '=?beforeRated',
-			beforeReset: '=?beforeReset'
+			ngModel      : '=',
+			min          : '=?min',
+			max          : '=?max',
+			step         : '=?step',
+			readOnly     : '&?readOnly',
+			pristine     : '=?pristine',
+			resetable    : '&?resetable',
+			starWidth    : '=?starWidth',
+			starHeight   : '=?starHeight',
+			canelWidth   : '=?canelWidth',
+			cancelHeight : '=?cancelHeight',
+			rated        : '=?rated',
+			reset        : '=?reset',
+			beforeRated  : '=?beforeRated',
+			beforeReset  : '=?beforeReset'
 		},
-		templateUrl: 'ng-rate-it.html',
+		templateUrl: 'ngRateIt/ng-rate-it.html',
         require: 'ngModel',
         replace: true,
         link: link,
@@ -73,6 +75,8 @@ module
 	$scope.starWidth = $scope.starWidth || 16;
 	$scope.starPartWidth = $scope.starWidth * $scope.step;
 	$scope.starHeight = $scope.starHeight || 16;
+	$scope.canelWidth = $scope.canelWidth || 16;
+	$scope.cancelHeight = $scope.cancelHeight || 16;
 
 	var diff = $scope.max - $scope.min,
 	steps = diff / $scope.step,
@@ -134,12 +138,23 @@ module
 	$templateCache.put('ngRateIt/ng-rate-it.html',
 
 		'<div class="ngrateit" ng-class="{\'ngrateit-readonly\': readOnly()}">' +
-			'<a class="ngrateit-background ngrateit-reset" ng-mouseenter="resetCssOffset=5;" ng-mouseleave="resetCssOffset=4;" ng-if="!readOnly() && resetable()" ng-click="removeRating()" ng-style="{\'width\': starWidth+\'px\', \'height\': starHeight+\'px\', \'background-position\': \'0 \'+(-resetCssOffset*starHeight)+\'px\'}"></a>' +
-			'<div class="ngrateit-star_wrapper" ng-click="setValue()" ng-mouseenter="onEnter($event)" ng-mousemove="onHover($event)" ng-mouseleave="onLeave();" ng-style="{\'width\': ((max-min)*starWidth)+\'px\', \'height\': starHeight+\'px\'}">' +
-				'<div class="ngrateit-background"></div>' +
-				'<div class="ngrateit-value" ng-hide="!readOnly() && hoverValue>0 && hoverValue!==(ngModel-min)" ng-style="{\'width\': (ngModel-min)*starWidth+\'px\', \'background-position\': \'0 \'+(-2*starHeight)+\'px\'}"></div>' +
-				'<div class="ngrateit-hover" ng-if="!readOnly() && hoverValue!==(ngModel-min)" ng-style="{\'width\': hoverValue*starWidth+\'px\', \'background-position\': \'0 \'+(-3*starHeight)+\'px\'}" ></div>' +
-			'</div>' +
+
+    		'<a ' +
+        		'ng-if="!readOnly() && resetable()"' +
+        		'ng-click="removeRating()"' +
+        		'class="ngrateit-reset ngrateit-star"' +
+        		'ng-style="{\'width\': canelWidth+\'px\', \'height\':cancelHeight+\'px\'}"' +
+    		'></a>' +
+
+    		'<div ng-if="!hide" id="origin" class="ngrateit-rating">' +
+        		'<span' +
+            		'class="ngrateit-star ngrateit-bg-star"' +
+            		'ng-repeat="i in getStartParts() track by $index" ' +
+            		'ng-class="{\'ngrateit-selected\': isSelected($index) }"' +
+            		'ng-click="setValue($index)"' +
+            		'ng-style="{\'width\': starPartWidth+\'px\', \'height\':starHeight+\'px\', \'background-position\': getStarOffset($index)+\'px 0\'}"' +
+        		'><span>' +
+
 		'</div>'
 
 	);
