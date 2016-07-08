@@ -96,9 +96,9 @@ You can easily add your own star style via css. You can use the star-width and s
 
 ### Release Note:
 
-V2.0.0
+V3.0.0
 
-* BREAKING: removed `over` callback.
+* BREAKING: The `over` callback is removed.
+* BREAKING: If you're using your own template, you need to replace it.
+* Template and CSS file are refectured in order to support mobile usage.
 * Moved calculations from template to controller.
-* Template and CSS are refectured
-* 

@@ -13,6 +13,7 @@ module.exports = function (grunt) {
     config: {
       src: 'src',
       dist: 'dist',
+      gh: 'gh-pages',
       tmp: '.tmp'
     },
 
@@ -24,6 +25,14 @@ module.exports = function (grunt) {
           src: [
             '.tmp',
             '<%= config.dist %>/**/*'
+          ]
+        }]
+      },
+      gh: {
+        files: [{
+          dot: true,
+          src: [
+            '<%= config.gh %>'
           ]
         }]
       }
@@ -95,19 +104,75 @@ module.exports = function (grunt) {
           ]
         }
       }
-    }
+    },
 
+    copy:{
+      gh:{
+        files: [
+          {
+            cwd: 'example',
+            src: '**/*',
+            dest: '<%= config.gh %>',
+            expand: true
+          },
+          {
+            src: ['src/**/*'], 
+            dest: '<%= config.gh %>/'
+          }
+        ]
+      }
+    },
+
+    replace: {
+      gh: {
+        options: {
+          usePrefix:false,
+          patterns: [
+            {
+              match: '../',
+              replacement: ''
+            }
+          ]
+        },
+        files: [
+          {src: ['<%= config.gh %>/index.html'], dest: '<%= config.gh %>/index.html'}
+        ]
+      }
+    },
+
+    'gh-pages': {
+      options: {
+        base: 'gh-pages',
+        message: 'Auto-generated commit'
+      },
+      src: ['**']
+    },
+
+    version: {
+      project: {
+        src: ['package.json', 'bower.json']
+      }
+    }
 
   });
 
   grunt.registerTask('build', [
-    'clean',
+    'clean:dist',
     'jslint',
     'removelogging',
     'ngAnnotate',
     'uglify',
     'imageEmbed',
     'cssmin'
+  ]);
+
+  grunt.registerTask('ghpage', [
+    'build',
+    'clean:gh',
+    'copy:gh',
+    'replace:gh',
+    'gh-pages',
+    'clean:gh',
   ]);
 
 };
