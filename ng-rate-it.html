@@ -1,0 +1,20 @@
+<div class="ngrateit" ng-class="{'ngrateit-readonly': readOnly()}">
+
+    <a 
+        ng-if="!readOnly() && resetable()"
+        ng-click="removeRating()"
+        class="ngrateit-reset ngrateit-star"
+        ng-style="{'width': canelWidth+'px', 'height':cancelHeight+'px'}"
+    ></a>
+
+    <div ng-if="!hide" id="origin" class="ngrateit-rating">
+        <span
+            class="ngrateit-star ngrateit-bg-star"
+            ng-repeat="i in getStartParts() track by $index" 
+            ng-class="{'ngrateit-selected': isSelected($index) }"
+            ng-click="setValue($index)"
+            ng-style="{'width': starPartWidth+'px', 'height':starHeight+'px', 'background-position': getStarOffset($index)+'px 0'}"
+        ><span>
+    </div>
+
+</div>

@@ -1,0 +1,43 @@
+.ngrateit-rating {
+	display: inline-block;
+    overflow: hidden;
+}
+
+/* Reset button */
+.ngrateit-reset{
+    background-image: url("../images/cancel-icon.svg");
+    display: inline-block;
+    background-position:  0 0;
+}
+.ngrateit-reset:hover{
+    background-position:  0 100%;
+}
+
+/* star */
+.ngrateit-star{
+    display: block;
+    float: left;
+    overflow: hidden;
+    background-repeat: repeat-x;
+}
+
+/* Background */
+.ngrateit-bg-star{
+    background-image: url("../images/bg-star.svg");
+}
+
+/* Selected state */
+.ngrateit-selected {
+    background-image: url("../images/rated-star.svg");
+}
+
+/* Cancelation of hover styling */
+.ngrateit:not(.ngrateit-readonly) .ngrateit-rating span:hover ~ span {
+    background-image: url("../images/bg-star.svg");
+}
+
+/* Hover styling */
+.ngrateit:not(.ngrateit-readonly) .ngrateit-rating:hover span {
+    cursor: pointer;
+    background-image: url("../images/hover-star.svg");
+}

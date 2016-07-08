@@ -10,6 +10,7 @@ myApp.controller('ExampleController', ['$scope', '$q', '$timeout', function($sco
             readonly: 2.5,
             readonly_enables: true,
             minMaxStep:6,
+            minMaxStep2:8.75,
             pristine: 3,
             resetable: 1,
             heightWidth: 1.5,
@@ -25,10 +26,6 @@ myApp.controller('ExampleController', ['$scope', '$q', '$timeout', function($sco
         $scope.resetCallback = function () {
             alert('Reset clicked!');
             console.log('Reset clicked!');
-        };
-
-        $scope.overCallback = function (e) {
-            console.log('overCallback', e);
         };
 
         $scope.confirmReset = function () {
