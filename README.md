@@ -3,7 +3,7 @@
 This directive was inspired by the jQuery (star)rating plugin [RateIt](http://rateit.codeplex.com/).
 However this package will work without jQuery and is very light weight.
 
-![ng-rate-it](https://cloud.githubusercontent.com/assets/5055413/8997545/b476cbdc-3722-11e5-9839-f94341752895.gif)
+![ng-rate-it](ng-rate-it.png?raw=true)
 
 [Live demo](http://akempes.github.io/angular-rateit/)
 

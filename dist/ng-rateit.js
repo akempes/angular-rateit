@@ -147,7 +147,7 @@ module
     		'></a>' +
 
     		'<div ng-if="!hide" id="origin" class="ngrateit-rating">' +
-        		'<span' +
+        		'<span ' +
             		'class="ngrateit-star ngrateit-bg-star"' +
             		'ng-repeat="i in getStartParts() track by $index" ' +
             		'ng-class="{\'ngrateit-selected\': isSelected($index) }"' +
