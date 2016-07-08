@@ -66,19 +66,21 @@ For more advanced functionality you can add a couple attributes:
 
 | Attribute | Description | Value | Default |
 |---|---|---|---|
-| ng-model     | Object bound to control. (Required) | String, Number, Array | - |
-| min          | Minimal value. | Double | 0 |
-| max          | Maximal value. The difference between min and max will provide the number of stars. | Double | 5 |
-| step         | Step size. | Double | 0.5 |
-| read-only    | Whether or not is readonly. | Boolean | false |
-| pristine     | Whether or not the current value is the initial value. | Boolean | true |
-| resetable    | When not readonly, whether to show the reset button. | Boolean | true |
-| star-width   | Width of the star picture. | Integer | 16 |
-| star-height  | Height of the star picture.  | Integer | 16 |
-| rated        | Fired when a rating happened. (Obtain the rated value by the model) | Function | - |
-| reset        | Fired when the reset button was clicked. | Function | - |
-| before-rated | Fired before the item is actually rated. By rejecting the promise it is possible to cancel the rating. | Function: return promise | - |
-| before-reset | Fired before the item is actually reset. By rejecting the promise it is possible to cancel the reset. | Function: return promise | - |
+| ng-model     	| Object bound to control. (Required) | String, Number, Array | - |
+| min          	| Minimal value. | Double | 0 |
+| max          	| Maximal value. The difference between min and max will provide the number of stars. | Double | 5 |
+| step         	| Step size. | Double | 0.5 |
+| read-only    	| Whether or not is readonly. | Boolean | false |
+| pristine     	| Whether or not the current value is the initial value. | Boolean | true |
+| resetable    	| When not readonly, whether to show the reset button. | Boolean | true |
+| star-width   	| Width of the star picture. | Integer | 16 |
+| star-height  	| Height of the star picture. | Integer | 16 |
+| cancel-width  | Width of the cancel icon. | Integer | star-width |
+| cancel-height | Height of the cancel icon. | Integer | star-height |
+| rated        	| Fired when a rating happened. (Obtain the rated value by the model) | Function | - |
+| reset        	| Fired when the reset button was clicked. | Function | - |
+| before-rated 	| Fired before the item is actually rated. By rejecting the promise it is possible to cancel the rating. | Function: return promise | - |
+| before-reset 	| Fired before the item is actually reset. By rejecting the promise it is possible to cancel the reset. | Function: return promise | - |
 
 
 ### Customization
