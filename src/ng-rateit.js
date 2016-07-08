@@ -75,8 +75,8 @@ module
 	$scope.starWidth = $scope.starWidth || 16;
 	$scope.starPartWidth = $scope.starWidth * $scope.step;
 	$scope.starHeight = $scope.starHeight || 16;
-	$scope.canelWidth = $scope.canelWidth || 16;
-	$scope.cancelHeight = $scope.cancelHeight || 16;
+	$scope.canelWidth = $scope.canelWidth || $scope.starWidth;
+	$scope.cancelHeight = $scope.cancelHeight || $scope.starHeight;
 
 	var diff = $scope.max - $scope.min,
 	steps = diff / $scope.step,
