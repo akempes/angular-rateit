@@ -99,6 +99,6 @@ You can easily add your own star style via css. You can use the star-width and s
 V3.0.0
 
 * BREAKING: The `over` callback is removed.
-* BREAKING: If you're using your own template, you need to replace it.
-* Template and CSS file are refactored in order to support mobile usage.
+* BREAKING: If you're using your own template, you need to update it.
+* Template and CSS file are refactored in order to support mobile divices.
 * Moved calculations from template to controller.
