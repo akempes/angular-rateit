@@ -100,5 +100,5 @@ V3.0.0
 
 * BREAKING: The `over` callback is removed.
 * BREAKING: If you're using your own template, you need to replace it.
-* Template and CSS file are refectured in order to support mobile usage.
+* Template and CSS file are refactored in order to support mobile usage.
 * Moved calculations from template to controller.
