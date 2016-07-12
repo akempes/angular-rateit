@@ -18,8 +18,8 @@ bower install angular-rateit
 And add the files to your index page:
 
 ```html
-<link rel="stylesheet" href="angular-rateit/dist/rateit.css" />
-<script src="angular-rateit/dist/rateit.js"></script>
+<link rel="stylesheet" href="angular-rateit/dist/ng-rateit.css" />
+<script src="angular-rateit/dist/ng-rateit.js"></script>
 ```
 
 Finally add 'ngRateIt' to your main module's list of dependencies:
