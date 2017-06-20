@@ -63,7 +63,7 @@ module
 .controller('ngRateItController', ["$scope", "$timeout", function ( $scope, $timeout ) {
 	'use strict';
 
-	$scope.hide = false;
+	$scope.isTouch = !! window.hasOwnProperty("ontouchstart") || window.navigator.msMaxTouchPoints > 0;
 	$scope.orgValue = angular.copy($scope.ngModel);
 
 	$scope.min = $scope.min || 0;
@@ -113,7 +113,6 @@ module
 
 	$scope.setValue = function (index) {
 		if (!$scope.readOnly()) {
-			$scope.hide = true; // Hide element due to presisting IOS :hover
 			var tmpValue = angular.copy($scope.min + getValue(index));
 			$scope.beforeRated(tmpValue).then(function () {
 				$scope.ngModel = tmpValue;
@@ -121,9 +120,6 @@ module
 					$scope.rated();
 				});
 			});
-			$timeout(function () {
-				$scope.hide = false;
-			}, 5); // Show rating s.a.p. 
 		}
 	};
 
@@ -146,7 +142,7 @@ module
         		'ng-style="{\'width\': canelWidth+\'px\', \'height\':cancelHeight+\'px\'}"' +
     		'></a>' +
 
-    		'<div ng-if="!hide" id="origin" class="ngrateit-rating">' +
+    		'<div ng-if="!hide" id="origin" class="ngrateit-rating" ng-class="{\'ngrateit-hashover\':!isTouch}">' +
         		'<span ' +
             		'class="ngrateit-star ngrateit-bg-star"' +
             		'ng-repeat="i in getStartParts() track by $index" ' +
