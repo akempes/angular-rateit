@@ -1,6 +1,4 @@
-var module = angular.module('ngRateIt', ['ng']);
-
-module
+angular.module('ngRateIt', ['ng'])
 .directive('ngRateIt', ["$q", function( $q ) {
 	'use strict';
 
