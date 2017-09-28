@@ -147,8 +147,8 @@ angular.module('ngRateIt', ['ng'])
             		'ng-class="{\'ngrateit-selected\': isSelected($index) }"' +
             		'ng-click="setValue($index)"' +
             		'ng-style="{\'width\': starPartWidth+\'px\', \'height\':starHeight+\'px\', \'background-position\': getStarOffset($index)+\'px 0\'}"' +
-        		'><span>' +
-
+        		'></span>' +
+				'</div>' +
 		'</div>'
 
 	);
