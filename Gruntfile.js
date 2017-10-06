@@ -166,7 +166,7 @@ module.exports = function (grunt) {
     'cssmin'
   ]);
 
-  grunt.registerTask('deploy-path', [
+  grunt.registerTask('deploy-patch', [
     'version::patch',
     'ghpage'
   ]);
