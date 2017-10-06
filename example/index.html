@@ -85,9 +85,9 @@
 
         <h3>Callbacks</h3>
         <div>
-            <ng-rate-it ng-model="model.callbacks" rated="ratedCallback" reset="resetCallback" before-rated="confirmRating" before-reset="confirmReset"></ng-rate-it>
+            <ng-rate-it ng-model="model.callbacks" rated="ratedCallback(rating)" reset="resetCallback()" before-rated="confirmRating(rating, '--stars--')" before-reset="confirmReset()"></ng-rate-it>
             <p>Value: {{model.resetable}}</p>
-            <pre><ng-rate-it ng-model="model.callbacks" rated="ratedCallback" reset="resetCallback" before-rated="confirmRating" before-reset="confirmReset"></ng-rate-it></pre>
+            <pre><ng-rate-it ng-model="model.callbacks" rated="ratedCallback(rating)" reset="resetCallback()" before-rated="confirmRating(rating, '--stars--')" before-reset="confirmReset()"></ng-rate-it></pre>
         </div>
 
         <h3>Custom image</h3>

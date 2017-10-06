@@ -54,10 +54,10 @@ For more advanced functionality you can add a couple attributes:
 	resetable = "Boolean"
 	star-width = "Integer"
 	star-height = "Integer"
-	rated = "Function"
-	reset = "Function"
-	before-rated = "Function: return promise"
-	before-reset = "Function: return promise"
+	rated = "Function(rating)"
+	reset = "Function(rating)"
+	before-rated = "Function(newRating): return promise"
+	before-reset = "Function(rating): return promise"
 	>
 </ng-rate-it>
 ```
@@ -97,6 +97,20 @@ You can easily add your own star style via css. You can use the star-width and s
 ```
 
 ### Release Note:
+
+V4.0.0
+
+* BREAKING: The callback function binding has changed form two-way to method binding. This will allow you to pass your own variables to the callback function AND the current rating is passed in the `rating` parameter:  
+```html
+<ng-rate-it ng-model="model.basic" rated="myCallback(rating, 'Your own var')"></ng-rate-it>
+```
+```js
+$scope.myCallback = function (rating, cusotmVar) {
+	console.log(rating, customVar);
+}
+```
+To upgrade from v3 to v4, just add `()` after your function name.
+
 
 V3.0.0
 

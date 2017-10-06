@@ -45,10 +45,10 @@ angular.module('ngRateIt', ['ng'])
 			starHeight   : '=?starHeight',
 			canelWidth   : '=?canelWidth',
 			cancelHeight : '=?cancelHeight',
-			rated        : '=?rated',
-			reset        : '=?reset',
-			beforeRated  : '=?beforeRated',
-			beforeReset  : '=?beforeReset'
+			rated        : '&?rated',
+			reset        : '&?reset',
+			beforeRated  : '&?beforeRated',
+			beforeReset  : '&?beforeReset'
 		},
 		templateUrl: 'ngRateIt/ng-rate-it.html',
         require: 'ngModel',
@@ -102,9 +102,9 @@ angular.module('ngRateIt', ['ng'])
 
 	$scope.removeRating = function () {
 		if ($scope.resetable() && !$scope.readOnly()) {
-			$scope.beforeReset().then(function () {
+			$scope.beforeReset({rating:$scope.ngModel}).then(function () {
 				$scope.ngModel = $scope.min;
-				$scope.reset();
+				$scope.reset({rating:$scope.ngModel});
 			});
 		}
 	};
@@ -112,10 +112,11 @@ angular.module('ngRateIt', ['ng'])
 	$scope.setValue = function (index) {
 		if (!$scope.readOnly()) {
 			var tmpValue = angular.copy($scope.min + getValue(index));
-			$scope.beforeRated(tmpValue).then(function () {
+
+			$scope.beforeRated({rating:tmpValue}).then(function () {
 				$scope.ngModel = tmpValue;
 				$timeout(function () {
-					$scope.rated();
+					$scope.rated({rating:$scope.ngModel});
 				});
 			});
 		}

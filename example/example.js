@@ -18,9 +18,9 @@ myApp.controller('ExampleController', ['$scope', '$q', '$timeout', function($sco
             custom: 4,
         };
 
-        $scope.ratedCallback = function () {
-            alert('The rated value is: '+$scope.model.callbacks);
-            console.log('The rated value is: '+$scope.model.callbacks);
+        $scope.ratedCallback = function (rating) {
+            alert('The rated value is: '+ rating);
+            console.log('The rated value is: '+ rating);
         };
 
         $scope.resetCallback = function () {
@@ -38,11 +38,11 @@ myApp.controller('ExampleController', ['$scope', '$q', '$timeout', function($sco
             return d.promise;
         };
 
-        $scope.confirmRating = function (newRating) {
+        $scope.confirmRating = function (newRating, cusotmVar) {
             var d = $q.defer(); 
 
             $timeout(function  () {
-                if(confirm('Are you sure about rating us with '+newRating+' stars?')){
+                if(confirm('Are you sure about rating us with '+newRating+' '+cusotmVar+'?')){
                     d.resolve();
                 }else{
                     d.reject();
