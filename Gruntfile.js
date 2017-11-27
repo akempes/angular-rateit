@@ -116,7 +116,7 @@ module.exports = function (grunt) {
             expand: true
           },
           {
-            src: ['src/**/*'], 
+            src: ['dist/**/*'], 
             dest: '<%= config.gh %>/'
           }
         ]
