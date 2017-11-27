@@ -5,6 +5,10 @@
     "build": "grunt build",
     "deploy": "grunt deploy-patch"
   },
+  "main": [
+    "dist/ng-rateit.css",
+    "dist/ng-rateit.min.js"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/akempes/angular-rateit.git"
@@ -27,5 +31,6 @@
   },
   "engines": {
     "node": ">=0.10.0"
-  }
+  },
+  "license": "MIT"
 }
