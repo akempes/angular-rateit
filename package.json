@@ -1,6 +1,6 @@
 {
   "name": "angular-rateit",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "scripts": {
     "build": "grunt build",
     "deploy": "grunt deploy-patch"
